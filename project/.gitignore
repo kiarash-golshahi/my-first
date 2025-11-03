@@ -1,0 +1,43 @@
+# This files should be ignored.
+# I copied this list from ChatGPT, because it was my first time for creating gitignore file in a Django project.
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+.eggs/
+
+# Django stuff:
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Pytest / coverage
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+
+# VS Code
+.vscode/
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Migrations
+*/migrations/*.py
+!*/migrations/__init__.py
