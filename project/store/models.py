@@ -32,3 +32,11 @@ class Product(models.Model):
     # "related_name" makes each Category model object able to have access to its relative Product objects using "category.products.all()".
     registration_date = models.DateTimeField(auto_now_add=True)
     # "auto_now_add" saves the datetime when the new product is created in the admin panel and fills this property automatically.
+
+    class Meta:
+        ordering = ['title', 'registration_date']
+        verbose_name = 'کالا'
+        verbose_name_plural = 'کالاها'
+
+    def __str__(self):
+        return self.title
