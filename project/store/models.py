@@ -7,6 +7,14 @@ class Category(models.Model):
     """
     title = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ['title']
+        verbose_name = 'دسته‌بندی'
+        verbose_name_plural = 'دسته‌بندی‌ها'
+
+    def __str__(self):
+        return self.title
+
 class Product(models.Model):
     """
     Products which will be sold in the store.
