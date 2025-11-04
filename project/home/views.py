@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+def index(request):
+    """Return and render the homepage"""
+    context = {
+        'title': 'کالاهای مورد نیازتان را در فروشگاه ما پیدا کنید!',
+    }
+    return render(request, template_name='home/index.html', context=context)
