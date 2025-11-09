@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+
+<!--***-->
+
+{% block title %}
+    {{ block.super }} - {{ product.title }}
+{% endblock %}
+
+<!--***-->
+
+{% block content %}
+    {% include 'partials/profile-navbar.html' %}
+    <h1>{{ product.title }}</h1>
+    <p>قیمت: {{ product.price }} تومان</p>
+    <!--This place is for linking category page.-->
+    <p>جزئیات: {{ product.details }}</p>
+    <!--This place is for add the product to the cart, if the user is authenticated.-->
+{% endblock %}
