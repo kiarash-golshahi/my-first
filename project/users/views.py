@@ -1,7 +1,12 @@
 from .forms import LoginForm, SignUpForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'خروج با موفقیت انجام شد')
+    return redirect('home:index')
 
 def login_view(request):
     if request.method == 'POST':
