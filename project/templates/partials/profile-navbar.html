@@ -1,3 +1,7 @@
 <nav>
-    <p><a href="{% url 'users:signup' %}">ورود | ثبت‌نام</a></p>
+    {% if user.is_authenticated %}
+        <p></p>
+    {% else %}
+        <p><a href="{% url 'users:signup' %}">ورود | ثبت‌نام</a></p>
+    {% endif %}
 </nav>
