@@ -1,0 +1,38 @@
+{% extends 'master.html' %}
+
+<!--***-->
+
+{% block title %}
+    {{ block.super }} - ثبت‌نام
+{% endblock %}
+
+<!--***-->
+
+{% block content %}
+    <h1>ثبت‌نام</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% for field in signup_form %}
+            <div>
+                <p>
+                    <strong>{{ field.label_tag }}</strong>
+                    {{ field }}
+                    <br>
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </p>
+            </div>
+        {% endfor %}
+        <ul>
+            {% for field in signup_form %}
+                {% if field.help_text != '' %}
+                    <li><small>{{ field.help_text }}</small></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <button type="submit">ثبت‌نام</button>
+    </form>
+
+    <!--This place is for linking login page-->
+{% endblock %}

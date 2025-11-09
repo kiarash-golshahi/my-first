@@ -9,12 +9,8 @@
 <!--***-->
 
 {% block content %}
-
-    <!--This place is for profile navbar - that belongs to 'user' app.-->
-
-    <center>
-        <h1>{{ title }}</h1>
-    </center>
+    {% include 'partials/profile-navbar.html' %}
+    <h1>{{ title }}</h1>
 
     <!--This place is for search bar.-->
 

@@ -22,4 +22,7 @@ urlpatterns = [
     
     # 'home' app URL path
     path('', include('home.urls', namespace='home')),
+
+    # 'users' app URL path
+    path('users/', include('users.urls', namespace='users')),
 ]
