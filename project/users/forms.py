@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 
 class SignUpForm(UserCreationForm):
@@ -28,3 +28,22 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+class LoginForm(AuthenticationForm):
+    """Form to logging the user in"""
+    username = forms.CharField(
+        label='نام کاربری',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'name': 'username',
+            'placeholder': 'نام کاربری خود را وارد کنید',
+        })
+    )
+    password = forms.CharField(
+        label='گذرواژه',
+        required=True,
+        widget=forms.PasswordInput(attrs={
+            'name': 'password',
+            'placeholder': 'گذرواژه خود را وارد کنید',
+        })
+    )
