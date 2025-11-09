@@ -7,22 +7,34 @@ class SignUpForm(UserCreationForm):
     username = forms.CharField(
         label='نام کاربری',
         help_text='نام کاربری می‌تواند شامل حروف، اعداد و کاراکترهای @/+/-/./_ باشد.',
-        required=True
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'نام کاربری خود را وارد کنید',
+        })
     )
     email = forms.EmailField(
         label='ایمیل',
         help_text='',
-        required=True
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'ایمیل خود را وارد کنید',
+        })
     )
     password1 = forms.CharField(
         label='گذرواژه',
         help_text='گذرواژه باید دارای حداقل هشت کاراکتر و شامل اعداد و حروف باشد.',
-        required=True
+        required=True,
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'گذرواژه خود را وارد کنید'
+        })
     )
     password2 = forms.CharField(
         label='تکرار گذرواژه',
         help_text='',
-        required=True
+        required=True,
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'گذرواژه را تکرار کنید',
+        })
     )
 
     class Meta:
@@ -35,7 +47,6 @@ class LoginForm(AuthenticationForm):
         label='نام کاربری',
         required=True,
         widget=forms.TextInput(attrs={
-            'name': 'username',
             'placeholder': 'نام کاربری خود را وارد کنید',
         })
     )
@@ -43,7 +54,6 @@ class LoginForm(AuthenticationForm):
         label='گذرواژه',
         required=True,
         widget=forms.PasswordInput(attrs={
-            'name': 'password',
             'placeholder': 'گذرواژه خود را وارد کنید',
         })
     )
