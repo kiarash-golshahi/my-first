@@ -25,4 +25,7 @@ urlpatterns = [
 
     # 'users' app URL path
     path('users/', include('users.urls', namespace='users')),
+
+    # 'store' app URL path
+    path('store/', include('store.urls', namespace='store')),
 ]
