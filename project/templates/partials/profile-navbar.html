@@ -1,6 +1,6 @@
 <nav>
     {% if user.is_authenticated %}
-        <p></p>
+        <p><a href="{% url 'users:logout' %}">خروج</a></p>
     {% else %}
         <p><a href="{% url 'users:signup' %}">ورود | ثبت‌نام</a></p>
     {% endif %}
