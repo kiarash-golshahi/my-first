@@ -14,10 +14,14 @@
 
     <!--This place is for search bar.-->
 
+    <h2>تازه‌ترین محصولات</h2>
     {% for product in products %}
         {% include 'store/product-profile.html' %}
     {% endfor %}
-
-    <!--This place is for showing and linking the categories - that is related to 'store' app.-->
-
+    <h2>دسته‌بندی‌ها</h2>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'store:category' category.id %}">{{ category.title }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
