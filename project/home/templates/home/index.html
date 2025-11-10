@@ -14,7 +14,9 @@
 
     <!--This place is for search bar.-->
 
-    <!--This place is for showing 20 newest products profiles - that belongs to 'store' app.-->
+    {% for product in products %}
+        {% include 'store/product-profile.html' %}
+    {% endfor %}
 
     <!--This place is for showing and linking the categories - that is related to 'store' app.-->
 
