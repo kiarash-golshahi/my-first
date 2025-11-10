@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from store.models import Product
+from store.models import Category, Product
+
+def categories():
+    """A function to send categories to index view"""
+    return Category.objects.all().values()
 
 def newest_products():
     """A function to get 20 newest products"""
