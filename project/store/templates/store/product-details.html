@@ -13,7 +13,7 @@
     {% include 'store/searchbar.html' %}
     <h1>{{ product.title }}</h1>
     <p>قیمت: {{ product.price }} تومان</p>
-    <!--This place is for linking category page.-->
+    <p>دسته بندی: <a href="{% url 'store:category' product.category.id %}">{{ product.category }}</a></p>
     <p>جزئیات: {{ product.details }}</p>
     <!--This place is for add the product to the cart, if the user is authenticated.-->
 {% endblock %}
