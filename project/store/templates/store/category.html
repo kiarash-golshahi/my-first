@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+
+<!--***-->
+
+{% block title %}
+    {{ block.super }} - {{ category.title }}
+{% endblock %}
+
+<!--***-->
+
+{% block content %}
+    {% include 'partials/profile-navbar.html' %}
+    <h1>{{ category.title }}</h1>
+    {% for product in products %}
+        {% include 'store/product-profile.html' %}
+    {% endfor %}
+{% endblock %}
