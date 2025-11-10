@@ -1,0 +1,28 @@
+{% extends 'master.html' %}
+
+<!--***-->
+
+{% block title %}
+    {% if search %}
+        {{ block.super }} - نتایج جستجو برای {{ search }}
+    {% else %}
+        {{ block.super }} - جستجو
+    {% endif %}
+{% endblock %}
+
+<!--***-->
+
+{% block content %}
+    {% include 'partials/profile-navbar.html' %}
+    {% include 'store/searchbar.html' %}
+    {% if search %}
+        <h2>شما برای {{ search }} جستجو کردید.</h2>
+        {% for product in products %}
+            {% include 'store/product-profile.html' %}
+        {% empty %}
+            <p>نتیجه‌ای مطابق جستجوی شما یافت نشد.</p>
+        {% endfor %}
+    {% else %}
+        <p>نتیجه‌ای مطابق جستجوی شما یافت نشد.</p>
+    {% endif %}
+{% endblock %}
