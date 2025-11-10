@@ -11,9 +11,9 @@ def newest_products():
 
 def index(request):
     """Return and render the homepage"""
-    products = newest_products()
     context = {
         'title': 'کالاهای مورد نیازتان را در فروشگاه ما پیدا کنید!',
-        'products': products,
+        'products': newest_products(),
+        'categories': categories(),
     }
     return render(request, template_name='home/index.html', context=context)
