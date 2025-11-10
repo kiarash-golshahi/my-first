@@ -11,9 +11,7 @@
 {% block content %}
     {% include 'partials/profile-navbar.html' %}
     <h1>{{ title }}</h1>
-
-    <!--This place is for search bar.-->
-
+    {% include 'store/searchbar.html' %}
     <h2>تازه‌ترین محصولات</h2>
     {% for product in products %}
         {% include 'store/product-profile.html' %}
