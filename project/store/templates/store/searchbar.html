@@ -1,0 +1,4 @@
+<form method="GET" action="{% url 'store:search-results' %}">
+    <input type="search" placeholder="کالای مورد نظرتان را جستجو کنید..." name="search" value="{{ search|default:'' }}">
+    <button type="submit">جستجو</button>
+</form>
