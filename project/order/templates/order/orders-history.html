@@ -9,7 +9,7 @@
     <h1>تاریخچه سفارش‌ها</h1>
     {% for order in orders %}
         <div>
-            <h3>نام کالا: {{ order.ordered_product }}</h3>
+            <h3>نام کالا: <a href="{% url 'store:product-details' order.ordered_product.id %}">{{ order.ordered_product }}</a></h3>
             <p>تاریخ ثبت: {{ order.registration_date }}</p>
             <p><a href="{% url 'order:delete-order' order.id %}?next={{ request.path }}">حذف سفارش</a></p>
         </div>
