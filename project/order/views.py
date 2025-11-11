@@ -1,7 +1,15 @@
 from .forms import OrderForm
+from .models import Order
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from store.models import Product
+
+def orders_history(request):
+    orders = Order.objects.filter(orderer_user=request.user).order_by('-registration_date')
+    context = {
+        'orders': orders,
+    }
+    return render(request, template_name='order/orders-history.html', context=context)
 
 def order_placing(request, id):
     product = get_object_or_404(Product, id=id)
