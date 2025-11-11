@@ -1,0 +1,8 @@
+<nav>
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'order:orders-history' %}">تاریخچه سفارش‌ها</a></p>
+        <p><a href="{% url 'users:logout' %}?next={{ request.path }}">خروج</a></p>
+    {% else %}
+        <p><a href="{% url 'users:signup'%}?next={{ request.path }}">ورود | ثبت‌نام</a></p>
+    {% endif %}
+</nav>

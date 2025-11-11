@@ -1,0 +1,23 @@
+{% extends 'master.html' %}
+
+{% block title %}
+    {{ block.super }} - ثبت سفارش
+{% endblock %}
+
+{% block content %}
+    <h1>ثبت سفارش</h1>
+    <p><strong>عنوان کالا:</strong> {{ product.title }}</p>
+    <p><strong>قیمت:</strong> {{ product.price }} تومان</p>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% for field in order_form %}
+            <div>
+                <p>
+                    <strong>{{ field.label_tag }}</strong>
+                    {{ field }}
+                </p>
+            </div>
+        {% endfor %}
+        <button type="submit">ثبت سفارش</button>
+    </form>
+{% endblock %}

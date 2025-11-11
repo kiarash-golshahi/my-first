@@ -1,0 +1,27 @@
+{% extends 'master.html' %}
+
+{% block title %}
+    {{ block.super }} - ورود
+{% endblock %}
+
+{% block content %}
+    <h1>ورود</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {% for field in login_form %}
+            <div>
+                <p>
+                    <strong>{{ field.label_tag }}</strong>
+                    {{ field }}
+                    <br>
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </p>
+            </div>
+        {% endfor %}
+        <button type="submit">ورود</button>
+    </form>
+    <p>حساب کاربری ندارید؟ <a href="{% url 'users:signup' %}?next={{ next }}">ثبت‌نام</a> کنید.</p>
+{% endblock %}
