@@ -27,18 +27,20 @@ def login_view(request):
     return render(request, template_name='users/login.html', context=context)
 
 def signup(request):
+    next_url = request.GET.get('next', 'home:index')
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            user = authenticate(username, password)
+            user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('home:index')
+            return redirect(request.POST.get('next', next_url))
     else:
         form = SignUpForm()
     context = {
+        'next': next_url,
         'signup_form': form,
     }
     return render(request, template_name='users/signup.html', context=context)
