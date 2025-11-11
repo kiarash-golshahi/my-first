@@ -5,7 +5,7 @@ class Category(models.Model):
     """
     Categories to sort products in the store.
     """
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name='نام دسته')
 
     class Meta:
         ordering = ['title']
