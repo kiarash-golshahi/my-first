@@ -1,5 +1,5 @@
 from .models import Category, Product
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 def search(request):
     search_term = request.GET.get('search', '').strip()
@@ -11,7 +11,7 @@ def search(request):
     return render(request, template_name='store/search-results.html', context=context)
 
 def category_page(request, id):
-    category = Category.objects.get(id=id)
+    category = get_object_or_404(Category, id=id)
     products = category.products.all()
     context = {
         'products': products,
@@ -20,7 +20,7 @@ def category_page(request, id):
     return render(request, template_name='store/category.html', context=context)
 
 def product_details(request, id):
-    product = Product.objects.get(id=id)
+    product = get_object_or_404(Product, id=id)
     context = {
         'product': product,
     }
