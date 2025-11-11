@@ -1,12 +1,8 @@
 {% extends 'master.html' %}
 
-<!--***-->
-
 {% block title %}
     {{ block.super }} - {{ product.title }}
 {% endblock %}
-
-<!--***-->
 
 {% block content %}
     {% include 'partials/profile-navbar.html' %}
@@ -15,5 +11,9 @@
     <p>قیمت: {{ product.price }} تومان</p>
     <p>دسته بندی: <a href="{% url 'store:category' product.category.id %}">{{ product.category }}</a></p>
     <p>جزئیات: {{ product.details }}</p>
-    <!--This place is for add the product to the cart, if the user is authenticated.-->
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'order:order-placing' product.id %}">خرید کالا</a></p>
+    {% else %}
+        <p>برای ثبت سفارش و خرید کالا، به حساب کاربری خود <a href="{% url 'users:login' %}">وارد</a> شوید</p>
+    {% endif %}
 {% endblock %}
