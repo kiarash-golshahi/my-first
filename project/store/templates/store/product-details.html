@@ -14,6 +14,6 @@
     {% if user.is_authenticated %}
         <p><a href="{% url 'order:order-placing' product.id %}">خرید کالا</a></p>
     {% else %}
-        <p>برای ثبت سفارش و خرید کالا، به حساب کاربری خود <a href="{% url 'users:login' %}">وارد</a> شوید</p>
+        <p>برای ثبت سفارش و خرید کالا، به حساب کاربری خود <a href="{% url 'users:login' %}?next={{ request.path }}">وارد</a> شوید</p>
     {% endif %}
 {% endblock %}
