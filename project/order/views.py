@@ -4,6 +4,13 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from store.models import Product
 
+def delete_order(request, id):
+    next_url = request.GET.get('next', 'order:orders-history')
+    order = get_object_or_404(Order, id=id, orderer_user=request.user)
+    order.delete()
+    messages.success(request, 'سفارش با موفقیت حذف شد')
+    return redirect(next_url)
+
 def orders_history(request):
     orders = Order.objects.filter(orderer_user=request.user).order_by('-registration_date')
     context = {
