@@ -4,9 +4,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 
 def logout_view(request):
+    next_url = request.GET.get('next', 'home:index')
     logout(request)
     messages.success(request, 'خروج با موفقیت انجام شد')
-    return redirect('home:index')
+    return redirect(next_url)
 
 def login_view(request):
     next_url = request.GET.get('next', 'home:index') # 'home:index' is the default next URL
