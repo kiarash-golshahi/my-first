@@ -1,17 +1,14 @@
 {% extends 'master.html' %}
 
-<!--***-->
-
 {% block title %}
     {{ block.super }} - ثبت‌نام
 {% endblock %}
-
-<!--***-->
 
 {% block content %}
     <h1>ثبت‌نام</h1>
     <form method="POST" action="">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
         {% for field in signup_form %}
             <div>
                 <p>
@@ -33,5 +30,5 @@
         </ul>
         <button type="submit">ثبت‌نام</button>
     </form>
-    <p>حساب کاربری دارید؟ <a href="{% url 'users:login' %}">وارد</a> شوید.</p>
+    <p>حساب کاربری دارید؟ <a href="{% url 'users:login' %}?next={{ next }}">وارد</a> شوید.</p>
 {% endblock %}
