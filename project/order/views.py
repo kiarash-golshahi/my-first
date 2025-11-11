@@ -1,9 +1,11 @@
 from .forms import OrderForm
 from .models import Order
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from store.models import Product
 
+@login_required
 def delete_order(request, id):
     next_url = request.GET.get('next', 'order:orders-history')
     order = get_object_or_404(Order, id=id, orderer_user=request.user)
@@ -11,6 +13,7 @@ def delete_order(request, id):
     messages.success(request, 'سفارش با موفقیت حذف شد')
     return redirect(next_url)
 
+@login_required
 def orders_history(request):
     orders = Order.objects.filter(orderer_user=request.user).order_by('-registration_date')
     context = {
@@ -18,6 +21,7 @@ def orders_history(request):
     }
     return render(request, template_name='order/orders-history.html', context=context)
 
+@login_required
 def order_placing(request, id):
     product = get_object_or_404(Product, id=id)
     # 'get_object_or_404' gets the product based on the id. If the id isn't valid, it will redirect the user to 404 page.
