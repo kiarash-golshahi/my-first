@@ -48,7 +48,7 @@ python manage.py runserver
 ```
 
 6. Open the browser and go to this address:
-(http://127.0.0.1:8000/)[http://127.0.0.1:8000/]
+(http://127.0.0.1:8000/)
 
 ---
 
@@ -69,4 +69,4 @@ python manage.py runserver
 
 ## Connection
 
-You can ask me your questions and tell me your hints in my GitHub in (https://github.com/kiarash-golshahi)[GitHub].
+You can ask me your questions and tell me your hints in my GitHub in (https://github.com/kiarash-golshahi).
