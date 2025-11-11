@@ -9,17 +9,19 @@ def logout_view(request):
     return redirect('home:index')
 
 def login_view(request):
+    next_url = request.GET.get('next', 'home:index') # 'home:index' is the default next URL
     if request.method == 'POST':
         form = LoginForm(request, request.POST)
         if form.is_valid():
             login(request, form.get_user())
-            messages.success(request, "ورود با موفقیت انجام شد")
-            return redirect('home:index')
+            messages.success(request, 'ورود با موفقیت انجام شد')
+            return redirect(request.POST.get('next', next_url)) # Redirects the user to the 'next' URL
         else:
             messages.error(request, 'نام کاربری یا گذرواژه نادرست است')
     else:
         form = LoginForm()
     context = {
+        'next': next_url,
         'login_form': form,
     }
     return render(request, template_name='users/login.html', context=context)
