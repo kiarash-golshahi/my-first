@@ -1,0 +1,19 @@
+{% extends 'master.html' %}
+
+{% block title %}
+    {{ block.super }} - تاریخچه سفارش‌ها
+{% endblock %}
+
+{% block content %}
+    {% include 'store/searchbar.html' %}
+    <h1>تاریخچه سفارش‌ها</h1>
+    {% for order in orders %}
+        <div>
+            <h3>نام کالا: {{ order.ordered_product }}</h3>
+            <p>تاریخ ثبت: {{ order.registration_date }}</p>
+            <p><a href="{% url 'order:delete-order' order.id %}?next={{ request.path }}">حذف سفارش</a></p>
+        </div>
+    {% empty %}
+        <p>هیچ سفارشی از شما در اینجا ثبت نشده است.</p>
+    {% endfor %}
+{% endblock %}
