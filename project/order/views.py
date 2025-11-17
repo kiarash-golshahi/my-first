@@ -10,6 +10,8 @@ def delete_order(request, id):
     next_url = request.GET.get('next', 'order:orders-history')
     order = get_object_or_404(Order, id=id, orderer_user=request.user)
     order.delete()
+    order.ordered_product.inventory = order.ordered_product.inventory + 1
+    order.ordered_product.save()
     messages.success(request, 'سفارش با موفقیت حذف شد')
     return redirect(next_url)
 
