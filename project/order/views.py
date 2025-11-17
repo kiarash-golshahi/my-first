@@ -32,6 +32,8 @@ def order_placing(request, id):
             order.orderer_user = request.user
             order.ordered_product = product
             order.save()
+            product.inventory = product.inventory - 1
+            product.save()
             messages.success(request, 'سفارش شما با موفقیت ثبت شد')
             return redirect('store:product-details', id=id)
     else:
