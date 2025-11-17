@@ -30,6 +30,7 @@ class Product(models.Model):
     # "on_delete" keyword specifies what will happen if the parent object (created category in "Category" model) is deleted.
     # "models.CASCADE" specifies that all of the products will be deleted from the database if their parent object (category) is deleted.
     # "related_name" makes each Category model object able to have access to its relative Product objects using "category.products.all()".
+    inventory = models.IntegerField(verbose_name='موجودی')
     registration_date = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ثبت')
     # "auto_now_add" saves the datetime when the new product is created in the admin panel and fills this property automatically.
 
